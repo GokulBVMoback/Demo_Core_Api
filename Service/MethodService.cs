@@ -39,7 +39,7 @@ namespace Demo_Core_Api.Service
             }
             return employees;
         }
-        public Boolean AddMethod(Employee employee)
+        public void AddMethod(Employee employee)
         {
             try
             {
@@ -48,19 +48,19 @@ namespace Demo_Core_Api.Service
                 cmd.CommandText = "Insert into tbl_Emp(Name, Age) values('" + employee.Name + "'," + employee.Age + ")";
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return true;
+                //return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
+                //return false;
             }
             finally
             {
                 con.Close();
             }
         }
-        public Boolean UpdateMethod(int id,Employee employee)
+        public void UpdateMethod(int id,Employee employee)
         {
             try
             {
@@ -69,19 +69,17 @@ namespace Demo_Core_Api.Service
                 cmd.CommandText = "Update tbl_Emp Set Name='" + employee.Name + "', Age=" + employee.Age + "Where(ID=" + id + ");";
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
             }
             finally
             {
                 con.Close();
             }
         }
-        public Boolean DeleteMethod(int id)
+        public void DeleteMethod(int id)
         {
             try
             {
@@ -90,12 +88,10 @@ namespace Demo_Core_Api.Service
                 cmd.CommandText = "Delete from tbl_Emp Where(ID=" + id + ");";
                 con.Open();
                 cmd.ExecuteNonQuery();
-                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return false;
             }
             finally
             {
